@@ -6,9 +6,7 @@
   <title>E-commerce Register & Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -20,13 +18,7 @@
       align-items: center;
       height: 100vh;
     }
-
-    /* Top bar */
-    .top-bar {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-    }
+    .top-bar { position: absolute; top: 20px; right: 30px; }
     .top-bar button {
       background: rgba(255, 255, 255, 0.2);
       color: white;
@@ -39,12 +31,9 @@
       transition: all 0.3s ease;
     }
     .top-bar button:hover {
-      background: white;
-      color: #764ba2;
+      background: white; color: #764ba2;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-
-    /* Form container with glass effect */
     .form-container {
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(12px);
@@ -57,71 +46,33 @@
       position: absolute;
       transition: all 0.5s ease;
     }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      font-weight: 600;
-      color: #fff;
-    }
-
-    label {
-      font-size: 14px;
-      margin-top: 12px;
-      display: block;
-      font-weight: 500;
-    }
-
+    h2 { text-align: center; margin-bottom: 25px; font-weight: 600; color: #fff; }
+    label { font-size: 14px; margin-top: 12px; display: block; font-weight: 500; }
     input {
-      width: 100%;
-      padding: 12px;
-      margin-top: 5px;
-      border: none;
-      border-radius: 10px;
-      font-size: 15px;
-      outline: none;
+      width: 100%; padding: 12px; margin-top: 5px;
+      border: none; border-radius: 10px; font-size: 15px; outline: none;
     }
-
     input[type="submit"] {
       background: linear-gradient(135deg, #43cea2, #185a9d);
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: 0.3s;
+      color: white; font-weight: bold; cursor: pointer;
+      margin-top: 20px; transition: 0.3s;
     }
     input[type="submit"]:hover {
       background: linear-gradient(135deg, #185a9d, #43cea2);
       transform: scale(1.03);
       box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
     }
-
-    .extra-options {
-      margin-top: 12px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-    }
-    .extra-options a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .extra-options a:hover {
-      text-decoration: underline;
-    }
-
-    /* Hide forms */
-    .hidden {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(20px);
-    }
-
-    /* Animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .extra-options { margin-top: 12px; display: flex; justify-content: space-between; font-size: 13px; }
+    .extra-options a { color: #fff; text-decoration: none; font-weight: 500; }
+    .extra-options a:hover { text-decoration: underline; }
+    .hidden { opacity: 0; pointer-events: none; transform: translateY(20px); }
+    @keyframes fadeIn { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
+    .message {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #00ffcc;
     }
   </style>
 </head>
@@ -136,48 +87,50 @@
   <!-- Register Form -->
   <div class="form-container" id="registerForm">
     <h2>Register</h2>
-    <form>
+    <form id="regForm">
       <label>First Name</label>
-      <input type="text" placeholder="e.g. Allan" required>
-      
+      <input type="text" id="fname" placeholder="e.g. Allan" required>
+
       <label>Last Name</label>
-      <input type="text" placeholder="e.g. Otieno" required>
-      
+      <input type="text" id="lname" placeholder="e.g. Otieno" required>
+
       <label>Email</label>
-      <input type="email" placeholder="e.g. allan@gmail.com" required>
-      
+      <input type="email" id="email" placeholder="e.g. allan@gmail.com" required>
+
       <label>Phone</label>
-      <input type="tel" placeholder="e.g. +254712345678" required>
-      
+      <input type="tel" id="phone" placeholder="07xxxxxxxx" required>
+
       <label>Address</label>
-      <input type="text" placeholder="e.g. Nairobi, Kenya" required>
-      
+      <input type="text" id="address" placeholder="e.g. Nairobi, Kenya" required>
+
       <label>Password</label>
-      <input type="password" placeholder="Enter password" required>
-      
+      <input type="password" id="password" placeholder="Enter password" required>
+
       <label>Confirm Password</label>
-      <input type="password" placeholder="Re-enter password" required>
-      
+      <input type="password" id="cpassword" placeholder="Re-enter password" required>
+
       <input type="submit" value="Register">
+      <p class="message" id="regMessage"></p>
     </form>
   </div>
 
   <!-- Login Form -->
   <div class="form-container hidden" id="loginForm">
     <h2>Login</h2>
-    <form>
+    <form id="logForm">
       <label>Email</label>
-      <input type="email" placeholder="e.g. allan@gmail.com" required>
-      
+      <input type="email" id="loginEmail" placeholder="e.g. allan@gmail.com" required>
+
       <label>Password</label>
-      <input type="password" placeholder="Enter password" required>
-      
+      <input type="password" id="loginPassword" placeholder="Enter password" required>
+
       <div class="extra-options">
         <label><input type="checkbox"> Remember Me</label>
         <a href="#">Forgot Password?</a>
       </div>
-      
+
       <input type="submit" value="Login">
+      <p class="message" id="loginMessage"></p>
     </form>
   </div>
 
@@ -185,14 +138,71 @@
     function showForm(form) {
       document.getElementById("registerForm").classList.add("hidden");
       document.getElementById("loginForm").classList.add("hidden");
-
       if (form === "register") {
         document.getElementById("registerForm").classList.remove("hidden");
       } else {
         document.getElementById("loginForm").classList.remove("hidden");
       }
     }
-  </script>
 
+    // Register logic
+    document.getElementById("regForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      let fname = document.getElementById("fname").value.trim();
+      let lname = document.getElementById("lname").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let phone = document.getElementById("phone").value.trim();
+      let address = document.getElementById("address").value.trim();
+      let pass = document.getElementById("password").value;
+      let cpass = document.getElementById("cpassword").value;
+
+      // Email validation
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if(!email.match(emailPattern)) {
+        document.getElementById("regMessage").textContent = "Enter a valid email!";
+        return;
+      }
+
+      // Phone validation (Kenya format: 07xxxxxxxx)
+      let phonePattern = /^07\d{8}$/;
+      if(!phone.match(phonePattern)) {
+        document.getElementById("regMessage").textContent = "Enter a valid phone number (07xxxxxxxx)";
+        return;
+      }
+
+      if(pass !== cpass){
+        document.getElementById("regMessage").textContent = "Passwords do not match!";
+        return;
+      }
+
+      // Save user data locally
+      let user = {fname, lname, email, phone, address, pass};
+      localStorage.setItem("user", JSON.stringify(user));
+
+      document.getElementById("regMessage").textContent = "✅ Registration successful! Redirecting to login...";
+
+      // Show login form automatically after 2 seconds
+      setTimeout(() => {
+        showForm('login');
+      }, 2000);
+    });
+
+    // Login logic
+    document.getElementById("logForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      let email = document.getElementById("loginEmail").value.trim();
+      let pass = document.getElementById("loginPassword").value;
+
+      let storedUser = JSON.parse(localStorage.getItem("user"));
+
+      if(storedUser && email === storedUser.email && pass === storedUser.pass){
+        document.getElementById("loginMessage").textContent = "✅ Login successful! Welcome " + storedUser.fname;
+      } else {
+        document.getElementById("loginMessage").textContent = "❌ Invalid email or password!";
+      }
+    });
+  </script>
 </body>
 </html>
